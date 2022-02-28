@@ -1,0 +1,45 @@
+@font-face {
+  font-family: "Josefin Sans";
+  src:
+    url("fonts/josefin-sans-vf.woff2") format("woff2"),
+    url("fonts/josefin-sans-vf.woff") format("woff"),
+    url("fonts/josefin-sans-vf.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src:
+    url("fonts/montserrat-vf.woff2") format("woff2"),
+    url("fonts/montserrat-vf.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Present Roman";
+  src:
+    url("fonts/present-roman.woff2") format("woff2"),
+    url("fonts/present-roman.woff") format("woff"),
+    url("fonts/present-roman.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Electronic Highway Sign";
+  src:
+    url("fonts/electronic-highway-sign.woff2") format("woff2"),
+    url("fonts/electronic-highway-sign.woff") format("woff"),
+    url("fonts/electronic-highway-sign.ttf") format("truetype");
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  background: #224;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 9em;
+}
