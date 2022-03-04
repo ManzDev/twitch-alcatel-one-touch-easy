@@ -72,7 +72,7 @@ class AlcatelCrystal extends HTMLElement {
       <div class="logo">
         ALC<span class="a-letter"></span>TEL
       </div>
-      <alcatel-screen></alcatel-screen>
+      <alcatel-screen class="off"></alcatel-screen>
     </div>`;
   }
 }

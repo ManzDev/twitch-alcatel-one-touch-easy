@@ -5,6 +5,9 @@ import "./AlcatelCentralButtons.js";
 import "./AlcatelNumpadButtons.js";
 import "./AlcatelAntenna.js";
 
+export const TIME_TO_OFF = 5000;
+const buttonSound = new Audio("sounds/button.mp3");
+
 class AlcatelOneTouchEasy extends HTMLElement {
   constructor() {
     super();
@@ -60,6 +63,7 @@ class AlcatelOneTouchEasy extends HTMLElement {
         inset: 0;
         z-index: 0;
         display: flex;
+        pointer-events: none;
       }
 
       .background .circle {
@@ -132,11 +136,11 @@ class AlcatelOneTouchEasy extends HTMLElement {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(4, 1fr);
         grid-template-areas:
-          ". led-1"
-          "led-2 ."
+          "led-1 ."
+          ". led-2"
           "led-3 led-4"
           "led-5 led-6";
-        gap: 70px 60px;
+        gap: 65px 60px;
         transform: translate(0, -50px);
       }
 
@@ -147,24 +151,32 @@ class AlcatelOneTouchEasy extends HTMLElement {
       .led-5 { grid-area: led-5 }
       .led-6 { grid-area: led-6 }
 
+      .led-container.off .led {
+        background: #4d482d88;
+        box-shadow: 0 0 0 0 #d3d71200;
+        filter: blur(3px);
+      }
+
       .led {
-        background: #d3d712;
+        background: #d7ca12;
+        box-shadow: 0 0 2px 10px #d7b31244;
         width: 10px;
         height: 10px;
         border-radius: 50%;
         filter: blur(2px);
+        transition: box-shadow 0.3s;
       }
 
       .led-1 {
-        transform: translate(8px, 40px);
+        transform: translate(-2px, 40px);
         width: 15px;
         height: 15px;
-        filter: blur(5px);
+        filter: blur(3px);
       }
 
       .led-2 {
         transform: translate(0, 40px);
-        filter: blur(5px);
+        filter: blur(2px);
       }
 
       .body {
@@ -245,6 +257,7 @@ class AlcatelOneTouchEasy extends HTMLElement {
           inset 26px -31px 1px #000,
           inset -26px -31px 1px #000;
         transform: translate(-10px, 28px);
+        pointer-events: none;
       }
 
       .bottom::after,
@@ -287,6 +300,13 @@ class AlcatelOneTouchEasy extends HTMLElement {
         border-radius: 25px 50% 50% 25px / 40px 100% 100% 40px;
         background: #67858a;
         box-shadow: 2px 0 0 2px #3d5857;
+        cursor: pointer;
+      }
+
+      .buttons-container .button:active {
+        background: #445e62;
+        transform-origin: right center;
+        transform: scaleX(0.85);
       }
 
       .dot {
@@ -303,6 +323,29 @@ class AlcatelOneTouchEasy extends HTMLElement {
 
   connectedCallback() {
     this.render();
+    const buttons = Array.from(this.shadowRoot.querySelectorAll(".buttons-container .button"));
+    buttons.forEach((button) => button.addEventListener("click", () => this.onPress(button)));
+    this.addEventListener("BUTTON_PRESS", (ev) => this.turnOnLeds());
+  }
+
+  turnOnLeds() {
+    const ledContainer = this.shadowRoot.querySelector(".led-container");
+    ledContainer.classList.remove("off");
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => this.turnOffLeds(), TIME_TO_OFF);
+  }
+
+  turnOffLeds() {
+    const ledContainer = this.shadowRoot.querySelector(".led-container");
+    ledContainer.classList.add("off");
+  }
+
+  onPress(button) {
+    buttonSound.currentTime = 0;
+    buttonSound.play();
+
+    button.classList.contains("up") && this.dispatchEvent(new CustomEvent("UP_BUTTON", { bubbles: true, composed: true }));
+    button.classList.contains("down") && this.dispatchEvent(new CustomEvent("DOWN_BUTTON", { bubbles: true, composed: true }));
   }
 
   render() {
@@ -330,7 +373,7 @@ class AlcatelOneTouchEasy extends HTMLElement {
             <div class="box box-3"></div>
           </div>
           <div class="box-right"></div>
-          <div class="led-container">
+          <div class="led-container off">
             <div class="led led-1"></div>
             <div class="led led-2"></div>
             <div class="led led-3"></div>
@@ -353,8 +396,8 @@ class AlcatelOneTouchEasy extends HTMLElement {
         <div class="dot"></div>
       </div>
       <div class="buttons-container">
-        <div class="button"></div>
-        <div class="button"></div>
+        <div class="button up"></div>
+        <div class="button down"></div>
       </div>
     </div>`;
   }

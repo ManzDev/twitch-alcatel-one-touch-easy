@@ -1,3 +1,5 @@
+const buttonSound = new Audio("sounds/button.mp3");
+
 class AlcatelNumpadButtons extends HTMLElement {
   constructor() {
     super();
@@ -20,6 +22,9 @@ class AlcatelNumpadButtons extends HTMLElement {
       }
 
       .button {
+        --x: 0px;
+        --y: 0px;
+
         border: 1px solid #fff;
         border-bottom-width: 3px;
         box-shadow:
@@ -33,6 +38,9 @@ class AlcatelNumpadButtons extends HTMLElement {
         justify-content: center;
         align-items: center;
         background: var(--alcatel-color);
+        user-select: none;
+        cursor: pointer;
+        transform: translate(var(--x), var(--y));
       }
 
       .button data {
@@ -79,13 +87,32 @@ class AlcatelNumpadButtons extends HTMLElement {
       }
 
       .button:nth-child(3n -1) {
-        transform: translateY(6px);
+        --y: 6px;
+      }
+
+      .button:active {
+        --x: 1px;
+
+        transform: translate(var(--x), calc(var(--y) + 2px));
+        box-shadow:
+          0 0 0 1px #fffa,
+          0 0 8px #0005 inset,
+          4px 0 6px #fff8 inset;
       }
     `;
   }
 
   connectedCallback() {
     this.render();
+    const buttons = Array.from(this.shadowRoot.querySelectorAll(".button"));
+    buttons.forEach((button) => button.addEventListener("click", () => this.onPress(button)));
+  }
+
+  onPress(button) {
+    buttonSound.currentTime = 0;
+    buttonSound.play();
+    const event = new CustomEvent("BUTTON_PRESS", { detail: button, bubbles: true, composed: true });
+    this.dispatchEvent(event);
   }
 
   render() {

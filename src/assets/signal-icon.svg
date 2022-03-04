@@ -1,0 +1,13 @@
+<svg
+    id="signal"
+    viewBox="0 8 32 16"
+    stroke="currentColor"
+    stroke-width="1"
+    fill="none"
+    color="currentColor"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="m 21.004173,2.9972184 c -10.019475,0 -18.1418643,8.1223896 -18.1418643,18.1418646 M 21.004173,9.0445061 c -6.679649,0 -12.0945765,5.4149279 -12.0945765,12.0945769 M 21.004173,15.091796 c -3.339825,0 -6.047287,2.707462 -6.047287,6.047287"
+    style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
+</svg>

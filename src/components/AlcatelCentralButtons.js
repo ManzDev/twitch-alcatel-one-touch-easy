@@ -1,3 +1,5 @@
+const buttonSound = new Audio("sounds/button.mp3");
+
 class AlcatelCentralButtons extends HTMLElement {
   constructor() {
     super();
@@ -34,40 +36,53 @@ class AlcatelCentralButtons extends HTMLElement {
         box-shadow: 1px -1px 0 1px #0004;
         display: flex;
         justify-content: center;
+        transform: scale(var(--scale, 1)) translate(var(--x), var(--y)) rotate(var(--rotate, 0));
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .button:active {
+        transform:
+          scale(var(--scale, 1))
+          translate(calc(var(--x) + 2px), calc(var(--y) + 2px))
+          rotate(var(--rotate, 0));
+        box-shadow: none;
       }
 
       .accept {
+        --x: 6px;
+        --y: 15px;
+
         grid-area: accept;
         border-bottom-width: 3px;
         border-top-width: 1px;
-        transform: translate(6px, 15px);
         box-shadow: 1px 1px 0 1px #0004;
       }
+
       .book {
+        --x: 10px;
+        --y: -6px;
+        --rotate: -135deg;
+
         grid-area: book;
-        transform: translate(10px, -6px) rotate(-135deg);
         box-shadow: -1px -1px 0 1px #0004;
-      }
-      .book svg {
-        transform: rotate(180deg) translateY(2px) scale(1.15);
       }
 
       .cancel {
+        --x: 6px;
+        --y: 15px;
+        --scale: 0.8;
+        --rotate: 180deg;
+
         grid-area: cancel;
-        transform: scale(0.8) translate(6px, 15px) rotate(180deg);
-      }
-      .cancel span {
-        font-size: 1.25rem;
-        font-weight: bold;
-        transform: rotate(180deg) translateY(8px);
       }
 
       .call {
+        --x: 0px;
+        --y: -6px;
+        --rotate: 135deg;
+
         grid-area: call;
-        transform: translate(0, -6px) rotate(135deg);
-      }
-      .call svg {
-        transform: rotate(-45deg) translate(3px, -3px) scale(1.15);
       }
 
       .button.yellow {
@@ -80,6 +95,26 @@ class AlcatelCentralButtons extends HTMLElement {
         background: #094872;
       }
 
+      /* Icon Buttons */
+
+      .button svg {
+        pointer-events: none;
+      }
+
+      .call svg {
+        transform: rotate(-45deg) translate(3px, -3px) scale(1.15);
+      }
+
+      .cancel span {
+        font-size: 1.25rem;
+        font-weight: bold;
+        transform: rotate(180deg) translateY(8px);
+      }
+
+      .book svg {
+        transform: rotate(180deg) translateY(2px) scale(1.15);
+      }
+
       .button svg {
         width: 50%;
         fill: #fff;
@@ -89,6 +124,20 @@ class AlcatelCentralButtons extends HTMLElement {
 
   connectedCallback() {
     this.render();
+
+    const buttons = Array.from(this.shadowRoot.querySelectorAll(".button"));
+    buttons.forEach((button) => button.addEventListener("click", () => this.onPress(button)));
+  }
+
+  onPress(button) {
+    buttonSound.currentTime = 0;
+    buttonSound.play();
+    const event = new CustomEvent("BUTTON_PRESS", { detail: button, bubbles: true, composed: true });
+    this.dispatchEvent(event);
+
+    button.classList.contains("accept") && this.dispatchEvent(new CustomEvent("ACCEPT_BUTTON", { bubbles: true, composed: true }));
+    button.classList.contains("cancel") && this.dispatchEvent(new CustomEvent("CANCEL_BUTTON", { bubbles: true, composed: true }));
+    button.classList.contains("call") && this.dispatchEvent(new CustomEvent("CALL_BUTTON", { bubbles: true, composed: true }));
   }
 
   render() {
