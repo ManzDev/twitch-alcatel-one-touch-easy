@@ -1,4 +1,4 @@
-const f=function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))h(t);new MutationObserver(t=>{for(const e of t)if(e.type==="childList")for(const o of e.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&h(o)}).observe(document,{childList:!0,subtree:!0});function s(t){const e={};return t.integrity&&(e.integrity=t.integrity),t.referrerpolicy&&(e.referrerPolicy=t.referrerpolicy),t.crossorigin==="use-credentials"?e.credentials="include":t.crossorigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function h(t){if(t.ep)return;t.ep=!0;const e=s(t);fetch(t.href,e)}};f();class r extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
+const T=function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))b(s);new MutationObserver(s=>{for(const a of s)if(a.type==="childList")for(const n of a.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&b(n)}).observe(document,{childList:!0,subtree:!0});function e(s){const a={};return s.integrity&&(a.integrity=s.integrity),s.referrerpolicy&&(a.referrerPolicy=s.referrerpolicy),s.crossorigin==="use-credentials"?a.credentials="include":s.crossorigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function b(s){if(s.ep)return;s.ep=!0;const a=e(s);fetch(s.href,a)}};T();class l extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
       :host {
         --alcatel-color-alpha: #05a8c577;
         --spiral-shape: polygon(1% 47%, 10% 47%, 12% 57%, 14% 65%, 18% 71%, 23% 78%, 30% 84%, 37% 88%, 46% 91%, 54% 91%, 63% 90%, 73% 87%, 81% 81%, 86% 75%, 90% 66%, 91% 58%, 89% 49%, 84% 39%, 78% 32%, 66% 29%, 56% 30%, 48% 35%, 43% 42%, 42% 51%, 44% 58%, 50% 64%, 57% 66%, 66% 64%, 69% 58%, 75% 54%, 78% 57%, 76% 64%, 69% 71%, 61% 74%, 53% 74%, 44% 70%, 38% 64%, 34% 55%, 33% 46%, 36% 38%, 36% 38%, 40% 31%, 48% 25%, 54% 22%, 63% 21%, 71% 21%, 80% 23%, 86% 28%, 92% 35%, 96% 42%, 99% 51%, 99% 60%, 97% 68%, 95% 76%, 89% 84%, 82% 90%, 74% 95%, 66% 99%, 56% 100%, 46% 100%, 37% 97%, 27% 93%, 19% 87%, 12% 79%, 7% 70%, 2% 59%);
@@ -42,12 +42,12 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
         clip-path: var(--spiral-shape);
       }
     `}connectedCallback(){this.render()}render(){this.shadowRoot.innerHTML=`
-    <style>${r.styles}</style>
+    <style>${l.styles}</style>
     <div class="container">
       <div class="spiral-container">
         <div class="spiral"></div>
       </div>
-    </div>`}}customElements.define("alcatel-speaker",r);class i extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
+    </div>`}}customElements.define("alcatel-speaker",l);class d extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
       :host {
         --color: #f81e1e;
         --color: #dad72d;
@@ -78,11 +78,10 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
         filter: blur(3px);
       }
     `}connectedCallback(){this.render()}render(){this.shadowRoot.innerHTML=`
-    <style>${i.styles}</style>
+    <style>${d.styles}</style>
     <div class="container">
       <div class="led"></div>
-    </div>`}}customElements.define("alcatel-led",i);const g=`
-<svg version="1.1" id="battery" viewBox="0 11 64 16" xmlns="http://www.w3.org/2000/svg">
+    </div>`}}customElements.define("alcatel-led",d);var L=`<svg version="1.1" id="battery" viewBox="0 11 64 16" xmlns="http://www.w3.org/2000/svg">
 <path style="stroke:currentColor; fill:currentColor"
   d="m 53.079275,27.047683 v -6.19511 h 3.791377 V 9.4784421 H 53.079275 V 3.283332 C 53.079275,1.47295 51.606325,0 49.795942,0 H 3.2833324 C 1.4729499,0 0,1.47295 0,3.283332 v 23.764351 c 0,1.810382 1.4729499,3.283332 3.2833324,3.283332 H 49.795942 c 1.810383,0 3.283333,-1.47295 3.283333,-3.283332 z M 3.2833324,28.435327 c -0.7658581,0 -1.3876439,-0.621786 -1.3876439,-1.387644 V 3.283332 c 0,-0.765858 0.6217858,-1.387644 1.3876439,-1.387644 H 49.795942 c 0.765859,0 1.387644,0.621786 1.387644,1.387644 v 6.1951101 11.3741309 6.19511 c 0,0.765858 -0.621785,1.387644 -1.387644,1.387644 z"
   />
@@ -119,8 +118,7 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
   y="4.3834324"
   ry="0" />
 </svg>
-`,u=`
-<svg
+`,M=`<svg
     id="signal"
     viewBox="0 8 32 16"
     stroke="currentColor"
@@ -132,27 +130,35 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
   <path
     d="m 21.004173,2.9972184 c -10.019475,0 -18.1418643,8.1223896 -18.1418643,18.1418646 M 21.004173,9.0445061 c -6.679649,0 -12.0945765,5.4149279 -12.0945765,12.0945769 M 21.004173,15.091796 c -3.339825,0 -6.047287,2.707462 -6.047287,6.047287"
     style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none" />
-</svg>`,b=`
-<svg id="sms" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.22l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.38-4.7 2.83 4.7 2.9V5.38Zm-.03 6.88L9.33 8.79 8 9.59l-1.33-.8-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .97-.74ZM1 11.1l4.7-2.9L1 5.38v5.73Z"/></svg>
-`;class n extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
-      :host {
-
-      }
-
+</svg>
+`,C=`<svg id="sms" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.22l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.38-4.7 2.83 4.7 2.9V5.38Zm-.03 6.88L9.33 8.79 8 9.59l-1.33-.8-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .97-.74ZM1 11.1l4.7-2.9L1 5.38v5.73Z"/></svg>
+`;const g=new Audio("sounds/no-signal.mp3"),v=new Audio("sounds/dial-tone.mp3"),m=new Audio("sounds/noises.mp3"),r=["BALADE","BEEP","CLASSIC","COOL","FIESTA","LIGHT","POLKA","RHYTHM","RING","ROCK","SAXO","SPEED","SPRING","TOP-SECRET"],S=([...o])=>{o.forEach(t=>{t.pause(),t.currentTime=0})},i=r.map(o=>{const t=new Audio(`sounds/melodies/${o.toLowerCase()}.mp3`);return t.loop=!0,t});class c extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"}),this.currentMelody=0}static get styles(){return`
       .container {
         width: 150px;
         height: 65px;
-        background: #848b6a;
+        background-color: #aa9535;
+        background-image: linear-gradient(#0004, #0000, #0004);
         border-radius: 4px;
         box-shadow:
           1px 1px 2px #0004 inset,
-          -1px -1px 2px #0006 inset;
-
+          -1px -1px 2px #0006 inset,
+          3px 0 5px #fff4 inset,
+          0px 6px 4px #0005 inset,
+          0px 0px 5px #88752344;
         font-family: "Electronic Highway Sign";
         font-size: 1.2rem;
         padding: 4px 8px;
         color: #333;
         box-sizing: border-box;
+        transition: background-color 0.2s, box-shadow 0.2s;
+      }
+
+      :host(.off) .container {
+        background-color: #636853;
+        background-image: none;
+        box-shadow:
+          1px 1px 2px #0004 inset,
+          -1px -1px 2px #0006 inset;
       }
 
       .status {
@@ -188,13 +194,13 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
         display: flex;
         justify-content: center;
       }
-    `}connectedCallback(){this.render(),this.setDate()}setDate(){const a=new Date().toISOString().substring(5,10).replace("-","/"),s=new Date().toISOString().substring(11,16);this.shadowRoot.querySelector(".date").innerHTML=`<span>${a}</span><span>${s}</span>`}render(){this.shadowRoot.innerHTML=`
-    <style>${n.styles}</style>
+    `}connectedCallback(){this.render(),this.setDate(),document.addEventListener("BUTTON_PRESS",()=>this.turnOn()),document.addEventListener("UP_BUTTON",()=>this.previousMelody()),document.addEventListener("DOWN_BUTTON",()=>this.nextMelody()),document.addEventListener("ACCEPT_BUTTON",()=>this.playMelody()),document.addEventListener("CANCEL_BUTTON",()=>this.pauseMelody()),document.addEventListener("CALL_BUTTON",()=>this.makeCall())}pauseMelody(){const t=i[this.currentMelody];!t.paused&&t.pause()}previousMelody(){this.pauseMelody(),this.currentMelody=Math.max(this.currentMelody-1,0),this.setMessage(r[this.currentMelody])}playMelody(){i[this.currentMelody].currentTime=0,i[this.currentMelody].play()}nextMelody(){this.pauseMelody(),this.currentMelody=Math.min(this.currentMelody+1,r.length-1),this.setMessage(r[this.currentMelody])}makeCall(){S([g,v,m]);const t=~~(Math.random()*2);t===0&&g.play(),t===1&&v.play(),~~(Math.random()*6)===0&&m.play()}turnOn(){this.classList.remove("off"),clearTimeout(this.timer),this.timer=setTimeout(()=>this.turnOff(),E)}turnOff(){this.classList.add("off"),this.setMessage("MANZ.DEV")}setDate(){const t=new Date().toISOString().substring(5,10).replace("-","/"),e=new Date().toISOString().substring(11,16);this.shadowRoot.querySelector(".date").innerHTML=`<span>${t}</span><span>${e}</span>`}setMessage(t){this.shadowRoot.querySelector(".message").textContent=t}render(){this.shadowRoot.innerHTML=`
+    <style>${c.styles}</style>
     <div class="container">
-      <div class="status">${g} ${b} ${u}</div>
+      <div class="status">${L} ${C} ${M}</div>
       <div class="date"></div>
       <div class="message">MANZ.DEV</div>
-    </div>`}}customElements.define("alcatel-screen",n);class l extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
+    </div>`}}customElements.define("alcatel-screen",c);class p extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
       :host {
         display: flex;
         justify-content: center;
@@ -246,13 +252,13 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
         transform: translateY(1px);
       }
     `}connectedCallback(){this.render()}render(){this.shadowRoot.innerHTML=`
-    <style>${l.styles}</style>
+    <style>${p.styles}</style>
     <div class="container">
       <div class="logo">
         ALC<span class="a-letter"></span>TEL
       </div>
-      <alcatel-screen></alcatel-screen>
-    </div>`}}customElements.define("alcatel-crystal",l);class d extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
+      <alcatel-screen class="off"></alcatel-screen>
+    </div>`}}customElements.define("alcatel-crystal",p);const w=new Audio("sounds/button.mp3");class x extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
       :host {
 
       }
@@ -281,40 +287,53 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
         box-shadow: 1px -1px 0 1px #0004;
         display: flex;
         justify-content: center;
+        transform: scale(var(--scale, 1)) translate(var(--x), var(--y)) rotate(var(--rotate, 0));
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .button:active {
+        transform:
+          scale(var(--scale, 1))
+          translate(calc(var(--x) + 2px), calc(var(--y) + 2px))
+          rotate(var(--rotate, 0));
+        box-shadow: none;
       }
 
       .accept {
+        --x: 6px;
+        --y: 15px;
+
         grid-area: accept;
         border-bottom-width: 3px;
         border-top-width: 1px;
-        transform: translate(6px, 15px);
         box-shadow: 1px 1px 0 1px #0004;
       }
+
       .book {
+        --x: 10px;
+        --y: -6px;
+        --rotate: -135deg;
+
         grid-area: book;
-        transform: translate(10px, -6px) rotate(-135deg);
         box-shadow: -1px -1px 0 1px #0004;
-      }
-      .book svg {
-        transform: rotate(180deg) translateY(2px) scale(1.15);
       }
 
       .cancel {
+        --x: 6px;
+        --y: 15px;
+        --scale: 0.8;
+        --rotate: 180deg;
+
         grid-area: cancel;
-        transform: scale(0.8) translate(6px, 15px) rotate(180deg);
-      }
-      .cancel span {
-        font-size: 1.25rem;
-        font-weight: bold;
-        transform: rotate(180deg) translateY(8px);
       }
 
       .call {
+        --x: 0px;
+        --y: -6px;
+        --rotate: 135deg;
+
         grid-area: call;
-        transform: translate(0, -6px) rotate(135deg);
-      }
-      .call svg {
-        transform: rotate(-45deg) translate(3px, -3px) scale(1.15);
       }
 
       .button.yellow {
@@ -327,12 +346,32 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
         background: #094872;
       }
 
+      /* Icon Buttons */
+
+      .button svg {
+        pointer-events: none;
+      }
+
+      .call svg {
+        transform: rotate(-45deg) translate(3px, -3px) scale(1.15);
+      }
+
+      .cancel span {
+        font-size: 1.25rem;
+        font-weight: bold;
+        transform: rotate(180deg) translateY(8px);
+      }
+
+      .book svg {
+        transform: rotate(180deg) translateY(2px) scale(1.15);
+      }
+
       .button svg {
         width: 50%;
         fill: #fff;
       }
-    `}connectedCallback(){this.render()}render(){this.shadowRoot.innerHTML=`
-    <style>${d.styles}</style>
+    `}connectedCallback(){this.render(),Array.from(this.shadowRoot.querySelectorAll(".button")).forEach(e=>e.addEventListener("click",()=>this.onPress(e)))}onPress(t){w.currentTime=0,w.play();const e=new CustomEvent("BUTTON_PRESS",{detail:t,bubbles:!0,composed:!0});this.dispatchEvent(e),t.classList.contains("accept")&&this.dispatchEvent(new CustomEvent("ACCEPT_BUTTON",{bubbles:!0,composed:!0})),t.classList.contains("cancel")&&this.dispatchEvent(new CustomEvent("CANCEL_BUTTON",{bubbles:!0,composed:!0})),t.classList.contains("call")&&this.dispatchEvent(new CustomEvent("CALL_BUTTON",{bubbles:!0,composed:!0}))}render(){this.shadowRoot.innerHTML=`
+    <style>${x.styles}</style>
     <div class="container">
       <div class="yellow button accept">
       <svg viewBox="0 0 224 224" xmlns="http://www.w3.org/2000/svg">
@@ -355,7 +394,7 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
           <path d="M53.36 40.9c-2-3.79-8.98-7.9-9.28-8.08a5.54 5.54 0 0 0-2.71-.78c-1.3 0-2.37.6-3.01 1.68a33.35 33.35 0 0 1-2.6 2.86c-2.37 1.62-4.23 1.43-6.29-.63L18 24.47c-2.05-2.05-2.24-3.93-.64-6.3.23-.3 1.65-1.57 2.87-2.59a3.32 3.32 0 0 0 1.55-2 4.94 4.94 0 0 0-.65-3.73c-.17-.3-4.3-7.27-8.09-9.27a4.95 4.95 0 0 0-5.8.87L4.7 3.99C.69 7.99-.77 12.55.38 17.5c.96 4.13 3.74 8.52 8.28 13.06l14.7 14.7c5.75 5.75 11.23 8.67 16.29 8.67 3.72 0 7.19-1.58 10.3-4.7l2.54-2.54a4.9 4.9 0 0 0 .87-5.8z"/>
         </svg>
       </div>
-    </div>`}}customElements.define("alcatel-central-buttons",d);class c extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
+    </div>`}}customElements.define("alcatel-central-buttons",x);const y=new Audio("sounds/button.mp3");class u extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
       :host {}
 
       .container {
@@ -370,6 +409,9 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
       }
 
       .button {
+        --x: 0px;
+        --y: 0px;
+
         border: 1px solid #fff;
         border-bottom-width: 3px;
         box-shadow:
@@ -383,6 +425,9 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
         justify-content: center;
         align-items: center;
         background: var(--alcatel-color);
+        user-select: none;
+        cursor: pointer;
+        transform: translate(var(--x), var(--y));
       }
 
       .button data {
@@ -429,10 +474,20 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
       }
 
       .button:nth-child(3n -1) {
-        transform: translateY(6px);
+        --y: 6px;
       }
-    `}connectedCallback(){this.render()}render(){this.shadowRoot.innerHTML=`
-    <style>${c.styles}</style>
+
+      .button:active {
+        --x: 1px;
+
+        transform: translate(var(--x), calc(var(--y) + 2px));
+        box-shadow:
+          0 0 0 1px #fffa,
+          0 0 8px #0005 inset,
+          4px 0 6px #fff8 inset;
+      }
+    `}connectedCallback(){this.render(),Array.from(this.shadowRoot.querySelectorAll(".button")).forEach(e=>e.addEventListener("click",()=>this.onPress(e)))}onPress(t){y.currentTime=0,y.play();const e=new CustomEvent("BUTTON_PRESS",{detail:t,bubbles:!0,composed:!0});this.dispatchEvent(e)}render(){this.shadowRoot.innerHTML=`
+    <style>${u.styles}</style>
     <div class="container">
       <div class="button one"><data>1</data></div>
       <div class="button"><data>2</data><span>abc</span></div>
@@ -446,7 +501,7 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
       <div class="button"><span class="big asterisk">*</span></div>
       <div class="button zero"><data>0</data><span>+</span></div>
       <div class="button"><span class="big"><data>#</data></span></div>
-    </div>`}}customElements.define("alcatel-numpad-buttons",c);class p extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
+    </div>`}}customElements.define("alcatel-numpad-buttons",u);class h extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
       :host {}
 
       .container {
@@ -474,11 +529,11 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
         background-image: linear-gradient(91deg, #0000 10%, #fff9 25% 26%, #0000 42%, #0005 90%);
       }
     `}connectedCallback(){this.render()}render(){this.shadowRoot.innerHTML=`
-    <style>${p.styles}</style>
+    <style>${h.styles}</style>
     <div class="container">
       <div class="antenna"></div>
       <div class="base"></div>
-    </div>`}}customElements.define("alcatel-antenna",p);class x extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
+    </div>`}}customElements.define("alcatel-antenna",h);const E=5e3,k=new Audio("sounds/button.mp3");class f extends HTMLElement{constructor(){super();this.attachShadow({mode:"open"})}static get styles(){return`
       :host {
         --alcatel-color-alpha: #05a8c5aa;
         --alcatel-color: #018da6;
@@ -526,6 +581,7 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
         inset: 0;
         z-index: 0;
         display: flex;
+        pointer-events: none;
       }
 
       .background .circle {
@@ -598,11 +654,11 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(4, 1fr);
         grid-template-areas:
-          ". led-1"
-          "led-2 ."
+          "led-1 ."
+          ". led-2"
           "led-3 led-4"
           "led-5 led-6";
-        gap: 70px 60px;
+        gap: 65px 60px;
         transform: translate(0, -50px);
       }
 
@@ -613,24 +669,32 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
       .led-5 { grid-area: led-5 }
       .led-6 { grid-area: led-6 }
 
+      .led-container.off .led {
+        background: #4d482d88;
+        box-shadow: 0 0 0 0 #d3d71200;
+        filter: blur(3px);
+      }
+
       .led {
-        background: #d3d712;
+        background: #d7ca12;
+        box-shadow: 0 0 2px 10px #d7b31244;
         width: 10px;
         height: 10px;
         border-radius: 50%;
         filter: blur(2px);
+        transition: box-shadow 0.3s;
       }
 
       .led-1 {
-        transform: translate(8px, 40px);
+        transform: translate(-2px, 40px);
         width: 15px;
         height: 15px;
-        filter: blur(5px);
+        filter: blur(3px);
       }
 
       .led-2 {
         transform: translate(0, 40px);
-        filter: blur(5px);
+        filter: blur(2px);
       }
 
       .body {
@@ -711,6 +775,7 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
           inset 26px -31px 1px #000,
           inset -26px -31px 1px #000;
         transform: translate(-10px, 28px);
+        pointer-events: none;
       }
 
       .bottom::after,
@@ -753,6 +818,13 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
         border-radius: 25px 50% 50% 25px / 40px 100% 100% 40px;
         background: #67858a;
         box-shadow: 2px 0 0 2px #3d5857;
+        cursor: pointer;
+      }
+
+      .buttons-container .button:active {
+        background: #445e62;
+        transform-origin: right center;
+        transform: scaleX(0.85);
       }
 
       .dot {
@@ -764,8 +836,8 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
         bottom: 52px;
         left: 36px;
       }
-    `}connectedCallback(){this.render()}render(){this.shadowRoot.innerHTML=`
-    <style>${x.styles}</style>
+    `}connectedCallback(){this.render(),Array.from(this.shadowRoot.querySelectorAll(".buttons-container .button")).forEach(e=>e.addEventListener("click",()=>this.onPress(e))),this.addEventListener("BUTTON_PRESS",e=>this.turnOnLeds())}turnOnLeds(){this.shadowRoot.querySelector(".led-container").classList.remove("off"),clearTimeout(this.timer),this.timer=setTimeout(()=>this.turnOffLeds(),E)}turnOffLeds(){this.shadowRoot.querySelector(".led-container").classList.add("off")}onPress(t){k.currentTime=0,k.play(),t.classList.contains("up")&&this.dispatchEvent(new CustomEvent("UP_BUTTON",{bubbles:!0,composed:!0})),t.classList.contains("down")&&this.dispatchEvent(new CustomEvent("DOWN_BUTTON",{bubbles:!0,composed:!0}))}render(){this.shadowRoot.innerHTML=`
+    <style>${f.styles}</style>
     <div class="container">
       <alcatel-antenna></alcatel-antenna>
       <div class="head texture">
@@ -788,7 +860,7 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
             <div class="box box-3"></div>
           </div>
           <div class="box-right"></div>
-          <div class="led-container">
+          <div class="led-container off">
             <div class="led led-1"></div>
             <div class="led led-2"></div>
             <div class="led led-3"></div>
@@ -811,7 +883,7 @@ const f=function(){const a=document.createElement("link").relList;if(a&&a.suppor
         <div class="dot"></div>
       </div>
       <div class="buttons-container">
-        <div class="button"></div>
-        <div class="button"></div>
+        <div class="button up"></div>
+        <div class="button down"></div>
       </div>
-    </div>`}}customElements.define("alcatel-one-touch-easy",x);
+    </div>`}}customElements.define("alcatel-one-touch-easy",f);
